@@ -1,9 +1,10 @@
 import { TodoForm } from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import TodoSummary from "./components/TodoSummary";
 import useTodos from "./hooks/useTodos";
 
 function App() {
-  const { todos, setTodoCompleted, addTodos, deleteTodo } = useTodos();
+  const { todos, setTodoCompleted, addTodos, deleteTodo,clearCompleted } = useTodos();
 
   return (
     <main className="py-8 bg-red-50 h-screen space-y-5 overflow-y-auto">
@@ -15,6 +16,9 @@ function App() {
           setTodoCompleted={setTodoCompleted}
           deleteTodo={deleteTodo}
         />
+        {todos.length !==0 && (
+         <TodoSummary todos={todos} onClearCompleted={clearCompleted} />
+        )}
       </div>
     </main>
   );

@@ -28,11 +28,15 @@ export default function useTodos(){
       function deleteTodo(id: number) {
         setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
       }
-    
+      
+      function clearCompleted(){
+        setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed));
+      }
       return {
         todos,
         setTodoCompleted,
         addTodos,
-        deleteTodo
+        deleteTodo,
+        clearCompleted
       }
 }
